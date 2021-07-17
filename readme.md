@@ -1,1 +1,1 @@
-## Bloging website to update new job openings 
+## Blogging website to update new job openings 
