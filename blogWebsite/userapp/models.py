@@ -10,12 +10,12 @@ class profile(models.Model):
     def __str__(self):
         return f'{self.user.username} profile'
     
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
         img = Image.open(self.image.path)
-
-        if img.height>300 or img.width>300:
+        rgb_im = img.convert('RGB')
+        if rgb_im.height>300 or rgb_im.width>300:
             output=(300,300)
-            img.thumbnail(output)
-            img.save(self.image.path)
+            rgb_im.thumbnail(output)
+            rgb_im.save(self.image.path)
